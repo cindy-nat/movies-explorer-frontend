@@ -50,7 +50,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  height: 32px;
+  min-height: 32px;
   min-width: 76px;
   border-radius: 3px;
   background-color: #3DDC84;
@@ -86,6 +86,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-size: contain;
 }
 
 @media screen and (max-width: 768px){
@@ -95,6 +96,44 @@
 
   .promo__buttons {
     margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .promo {
+    min-height: 644px;
+  }
+
+  .promo__logo {
+    margin-left: 14px;
+  }
+
+  .promo__buttons {
+    margin-right: 14px;
+  }
+
+  .promo__button-register {
+    margin-right: 14px;
+    font-size: 10px;
+  }
+
+  .promo__button-signin {
+    min-height: 26px;
+    min-width: 54px;
+    font-size: 10px;
+  }
+
+  .promo__big-logo {
+    width: 248px;
+    height: 248px;
+  }
+
+  .promo__title {
+    font-size: 31px;
+    line-height: 39px;
+    max-width: 300px;
+    align-self: center;
+    margin-top: 207px;
   }
 
 }
