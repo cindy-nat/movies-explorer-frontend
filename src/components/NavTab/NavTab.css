@@ -34,3 +34,11 @@
   opacity: .7;
   cursor: pointer;
 }
+
+@media screen and (max-width: 500px){
+  .navigation__list-item{
+    font-size: 11px;
+    margin-right: 24px;
+  }
+}
+
