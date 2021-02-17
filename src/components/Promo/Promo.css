@@ -87,3 +87,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width: 768px){
+  .promo__logo {
+    margin-left: 30px;
+  }
+
+  .promo__buttons {
+    margin-right: 30px;
+  }
+
+}
