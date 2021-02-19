@@ -1,6 +1,7 @@
 .navigation-container {
   background-color: #272727;
   font-family: "Inter", "Arial", sans-serif;
+  align-self: stretch;
 }
 
 .navigation {
@@ -13,11 +14,10 @@
 }
 
 .navigation__list{
-  min-width: 200px;
   list-style: none;
   margin: 0;
   display: flex;
-  padding: 0;
+  padding: 0 0 0 40px;
 }
 
 .navigation__list-item {
@@ -36,6 +36,10 @@
 }
 
 @media screen and (max-width: 500px){
+  .navigation__list {
+    padding-left: 22px;
+  }
+
   .navigation__list-item{
     font-size: 11px;
     margin-right: 24px;
