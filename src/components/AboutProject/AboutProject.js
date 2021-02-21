@@ -1,5 +1,4 @@
 import './AboutProject.css';
-import {Route} from "react-router-dom";
 
 function AboutProject() {
   return (

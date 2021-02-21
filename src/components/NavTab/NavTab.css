@@ -26,13 +26,16 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  color: #FFFFFF;
   text-decoration: underline;
 }
 
 .navigation__list-item:hover {
   opacity: .7;
   cursor: pointer;
+}
+
+.navigation__list-item-link {
+  color: #FFFFFF;
 }
 
 .navigation__list-item-link:visited {
