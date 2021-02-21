@@ -1,10 +1,10 @@
-.navigation-container {
+.navigation {
   background-color: #272727;
   font-family: "Inter", "Arial", sans-serif;
   align-self: stretch;
 }
 
-.navigation {
+.navigation__container {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
@@ -33,6 +33,10 @@
 .navigation__list-item:hover {
   opacity: .7;
   cursor: pointer;
+}
+
+.navigation__list-item-link:visited {
+  color: #FFFFFF;
 }
 
 @media screen and (max-width: 500px){
