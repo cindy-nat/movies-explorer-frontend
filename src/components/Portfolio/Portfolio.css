@@ -75,5 +75,32 @@
   .portfolio__list-link {
     font-size: 28px;
   }
+}
 
+@media screen and (max-width: 500px) {
+  .portfolio {
+    width: 91%;
   }
+
+  .portfolio__title {
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .portfolio__list {
+    margin-bottom: 70px;
+  }
+
+  .portfolio__list-link {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__list-arrow {
+    width: 15px;
+    height: 10px;
+    background-size: contain;
+    top: 10%;
+    transform: translateY(0);
+  }
+}
