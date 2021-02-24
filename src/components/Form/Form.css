@@ -56,7 +56,7 @@
   opacity: 1;
 }
 
-.form__button-register {
+.form__button {
   margin: 70px 0 16px;
   min-width: 396px;
   height: 45px;
@@ -73,7 +73,7 @@
   padding: 0;
 }
 
-.form__button-register:hover {
+.form__button:hover {
   opacity: .7;
   cursor: pointer;
 }
@@ -100,5 +100,32 @@
 @media screen and (max-width: 768px) {
   .form__text {
     margin-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form {
+    min-width: 81%;
+  }
+
+  .form__input {
+    width: 100%;
+  }
+
+  .form__button {
+    min-width: 100%;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 159px 0 14px;
+  }
+
+  .form__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__link {
+    font-size: 12px;
+    line-height: 15px;
   }
 }

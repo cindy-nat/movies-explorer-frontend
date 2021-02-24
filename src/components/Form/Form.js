@@ -17,7 +17,7 @@ function Form({ formName, submitButton, formText, link, linkText, children }) {
         <input type='password' className='form__input form__input_error' name='password' required/>
         <span id="form-name-input-error" className="form__error form__error_visible">Что-то пошло не так...</span>
 
-        <button type='submit' className={`form__button-${formName}`}>{submitButton}</button>
+        <button type='submit' className='form__button'>{submitButton}</button>
       </form>
       <p className="form__text">{formText}<Link to={`${link}`} className="form__link">{linkText}</Link></p>
     </>
