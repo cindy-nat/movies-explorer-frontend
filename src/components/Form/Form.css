@@ -1,6 +1,6 @@
 .form {
   min-width: 396px;
-  min-height: 380px;
+  min-height: 413px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -92,6 +92,7 @@
   line-height: 17px;
   color: #8B8B8B;
   margin: 16px 0 0;
+  align-self: center;
 }
 
 .form__link {
@@ -105,15 +106,15 @@
 }
 
 @media screen and (max-width: 768px) {
-  .form__text {
-    margin-bottom: 232px;
+  .form {
+    padding-bottom: 232px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .form {
     min-width: 81%;
-    min-height: 468px;
+    min-height: 497px;
   }
 
   .form__input {

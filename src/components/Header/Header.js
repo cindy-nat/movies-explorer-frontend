@@ -4,7 +4,7 @@ import logo from '../../images/logo.png';
 import {Link, Route, Switch} from "react-router-dom";
 import Logo from "../../images/logo.png";
 
-function Header() {
+function Header({ headerText }) {
   return (
     <Switch>
       <Route exact path = "/">
@@ -19,10 +19,10 @@ function Header() {
         </header>
       </Route>
 
-      <Route path='/signup'>
+      <Route path={['/signup', '/signin']}>
         <div className="header header_page_signup">
         <Link to='/'><img className="header__logo header__logo_page_signup" src = {logo} alt = "логотип"/></Link>
-        <h2 className="header__title">Добро пожаловать!</h2>
+        <h2 className="header__title">{headerText}</h2>
       </div>
       </Route>
     </Switch>

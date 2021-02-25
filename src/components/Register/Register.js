@@ -6,7 +6,7 @@ import Form from "../Form/Form";
 function Register() {
   return (
     <>
-      <Header/>
+      <Header headerText='Добро пожаловать!'/>
       <Form formName = 'register'
             submitButton = 'Зарегистрироваться'
             formText = 'Уже зарегистрированы?'
