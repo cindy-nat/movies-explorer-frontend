@@ -89,16 +89,6 @@
   cursor: pointer;
 }
 
-.header__account-picture {
-  background-image: url("../../images/profile-icon.png");
-  height: 26px;
-  width: 26px;
-  border-radius: 50%;
-  background-color: #313131;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .header__title {
   font-size: 24px;
   font-style: normal;

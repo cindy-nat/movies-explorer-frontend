@@ -1,11 +1,7 @@
 import React from 'react';
 import './PageNotFound.css';
-import { useHistory } from "react-router-dom";
 
-function PageNotFound() {
-  const history = useHistory();
-
-
+function PageNotFound({ history }) {
   return (
     <section className='not-found'>
       <h2 className='not-found__title'>404</h2>
