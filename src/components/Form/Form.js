@@ -6,7 +6,7 @@ function Form({ formName, submitButton, formText, link, linkText, children }) {
   return (
     <>
       <form className='form' name={`${formName}-form`} noValidate>
-
+      <div className='form__input-container'>
         {children}
 
         <label htmlFor='email' className='form__label'> E-mail</label>
@@ -16,6 +16,7 @@ function Form({ formName, submitButton, formText, link, linkText, children }) {
         <label htmlFor='password' className='form__label'> Пароль</label>
         <input type='password' className='form__input form__input_error' name='password' required/>
         <span id="form-name-input-error" className="form__error form__error_visible">Что-то пошло не так...</span>
+      </div>
 
         <button type='submit' className='form__button'>{submitButton}</button>
       </form>
