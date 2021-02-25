@@ -52,10 +52,19 @@
 
   .pages-navigation__link {
     font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
   }
 
   .pages-navigation__link_active {
     padding-bottom: 4px;
     border-bottom: 1px solid #FFFFFF;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .pages-navigation__list {
+    margin-top: 145px;
+    min-height: 112px;
   }
 }

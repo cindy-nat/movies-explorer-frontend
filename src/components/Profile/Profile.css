@@ -98,3 +98,29 @@
     padding-bottom: 269px;
   }
 }
+
+@media screen and (max-width: 500px){
+  .profile__form {
+    min-width: 260px;
+  }
+
+  .profile__form-label {
+    min-width: 260px;
+  }
+
+  .profile__title {
+    margin: 70px 0 80px;
+  }
+
+  .profile__submit-button {
+    margin-top: 379px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__exit-button {
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 40px;
+  }
+}

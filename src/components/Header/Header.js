@@ -36,10 +36,12 @@ function Header({ headerText }) {
       <Route path={['/movies', '/saved-movies', '/profile']}>
         <header className='header header_page_authorized'>
           <Link className='header__logo header__logo_page_main' to='/'><img src = {Logo} alt = "логотип"/></Link>
+
           <button className='header__menu-button' onClick={menuOnOpen}></button>
           {isMenuOpen && <div className={`header__overlay`}></div>}
           <div className={`header__menu-container ${isMenuOpen && 'header__menu-container_opened'}`}>
-            {isMenuOpen &&  <button type="button" className="header__close-button" onClick={menuOnClose}></button>}
+          {isMenuOpen &&  <button type="button" className="header__close-button" onClick={menuOnClose}></button>}
+
             <Navigation isMenuOpen ={isMenuOpen}/>
             <Link to='./profile' className='header__link'>Аккаунт
               <span className='header__icon-container'>
