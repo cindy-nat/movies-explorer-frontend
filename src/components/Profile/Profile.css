@@ -85,3 +85,16 @@
   opacity: .7;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px){
+  .profile__title {
+    margin: 236px 0 96px;
+  }
+
+  .profile__submit-button {
+    margin-top: 210px;
+  }
+  .profile__exit-button {
+    padding-bottom: 269px;
+  }
+}

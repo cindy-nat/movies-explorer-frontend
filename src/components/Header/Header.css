@@ -1,6 +1,7 @@
 .header {
   min-height: 74px;
   font-family: "Inter", "Arial", sans-serif;
+  position: relative;
 }
 
 .header_page_main {
@@ -128,7 +129,19 @@
   justify-content: center;
 }
 
+.header__menu-button {
+  display: none;
+}
+
+.header__overlay {
+  display: none;
+}
+
 @media screen and (max-width: 768px){
+  .header_page_authorized {
+    justify-content: space-between;
+  }
+
   .header_page_signup {
     min-height: 379px;
   }
@@ -139,6 +152,81 @@
 
   .header__buttons {
     margin-right: 30px;
+  }
+
+  .header__menu-button {
+    display: block;
+    border: none;
+    background-color: transparent;
+    background-image: url("../../images/menu-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 44px;
+    height: 44px;
+    margin: 15px 30px 0 0;
+    padding: 0;
+  }
+
+  .header__menu-button:focus {
+    outline: none;
+  }
+
+  .header__menu-button:hover {
+    opacity: .7;
+    cursor: pointer;
+  }
+
+  .header__menu-container {
+    display: none;
+    width: 520px;
+    height: 1024px;
+    background-color: #202020;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    z-index: 1;
+  }
+
+  .header__menu-container_opened {
+    display: flex;
+  }
+
+  .header__overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1024px;
+    background-color: #000000;
+    opacity: .3;
+  }
+
+  .header__link {
+    margin-bottom: 90px;
+  }
+
+  .header__close-button {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 22px;
+    height: 22px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-image: url("../../images/close-button.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .header__close-button:hover {
+    opacity: .7%;
+    cursor: pointer;
   }
 }
 
