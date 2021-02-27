@@ -8,7 +8,7 @@
 }
 
 .movies__list {
-  margin: 70px 0 0 10px;
+  margin: 70px 0 0;
 }
 
 .additional-button {
@@ -36,3 +36,11 @@
   opacity: .7;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px){
+  .movies__list {
+    grid-template-columns: repeat(auto-fill, minmax(339px, 339px));
+    gap: 30px;
+  }
+}
+

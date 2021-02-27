@@ -65,3 +65,11 @@
 .card__liked {
   background-image: url("../../images/liked-button.svg");
 }
+
+@media screen and (max-width: 768px) {
+  .card__photo {
+    height: 190px;
+    width: 339px;
+    object-fit: cover;
+  }
+}
