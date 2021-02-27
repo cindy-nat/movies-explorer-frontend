@@ -6,6 +6,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
+import Movies from "../Movies/Movies";
 
 function App() {
   const history = useHistory();
@@ -31,10 +32,14 @@ function App() {
         <Route path = "/signin">
           <Login/>
         </Route>
+
         <Route path = "/profile">
           <Profile name = {name}
                    email = {email}
                    handleSignOut = { handleSignOut }/>
+        </Route>
+        <Route path = "/movies">
+          <Movies/>
         </Route>
         <Route path="*">
           <PageNotFound history={history}/>

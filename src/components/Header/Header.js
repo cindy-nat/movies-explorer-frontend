@@ -5,7 +5,7 @@ import Logo from '../../images/logo.png';
 import personIcon from '../../images/profile-icon.svg';
 import Navigation from "../Navigation/Navigation";
 
-function Header({ headerText }) {
+function Header({ headerText, activeMovie }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuOnOpen = () => setIsMenuOpen(true);
@@ -42,7 +42,7 @@ function Header({ headerText }) {
           <div className={`header__menu-container ${isMenuOpen && 'header__menu-container_opened'}`}>
           {isMenuOpen &&  <button type="button" className="header__close-button" onClick={menuOnClose}></button>}
 
-            <Navigation isMenuOpen ={isMenuOpen}/>
+            <Navigation isMenuOpen ={isMenuOpen} activeMovie={activeMovie}/>
             <Link to='./profile' className='header__link'>Аккаунт
               <span className='header__icon-container'>
                 <img className='header__person-icon' src={personIcon}/>
