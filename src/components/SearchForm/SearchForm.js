@@ -1,0 +1,17 @@
+import React from 'react';
+import './SearchForm.css';
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+
+function SearchForm() {
+  return (
+    <form className='search-form'>
+      <div className='search-form__container'>
+        <input className='search-form__input'/>
+        <button className='search-form__submit-button'/>
+      </div>
+        <FilterCheckbox/>
+    </form>
+  );
+}
+
+export default SearchForm;
