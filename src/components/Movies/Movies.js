@@ -5,10 +5,9 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import picture from '../../images/pic__COLOR_pic.png'
+import Preloader from "../Preloader/Preloader";
 
 function Movies() {
-  const activeMovie = true;
-
   // Данные с фильмами, которые будут получены после фильтрации
   const movies = [{
     "nameRU": "33 слова о дизайне",
@@ -35,68 +34,70 @@ function Movies() {
       "duration": '1ч 42м',
       "image": picture
     },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
-    // {
-    //   "nameRU": "33 слова о дизайне",
-    //   "duration": '1ч 42м',
-    //   "image": picture
-    // },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
+    {
+      "nameRU": "33 слова о дизайне",
+      "duration": '1ч 42м',
+      "image": picture
+    },
   ]
   return (
     <>
-      <Header activeMovie = {activeMovie}/>
+      <Header/>
       <section className='movies'>
         <SearchForm/>
-        <MoviesCardList movies={movies} buttonClass='movies' moviesRoute={true}/>
+        {/*<Preloader/>*/}
+        {/*<p className='movies__text'>Фильмы не найдены</p>*/}
+        <MoviesCardList movies={movies} generalClass='movies'/>
       </section>
       <Footer/>
     </>

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Navigation.css';
-import { Link } from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 
 
-function Navigation({ activeMovie, activeSavedMovie, isMenuOpen }) {
+function Navigation({ isMenuOpen }) {
 
   return (
     <nav className='pages-navigation'>
@@ -12,14 +12,27 @@ function Navigation({ activeMovie, activeSavedMovie, isMenuOpen }) {
           <Link className={ `pages-navigation__link` } to='/'>
             Главная</Link>
         </li> }
+        <Route path={'/movies'}>
         <li className='pages-navigation__list-item'>
-          <Link className={`pages-navigation__link ${activeMovie && 'pages-navigation__link_active'}` } to='/movies'>
+          <Link className={`pages-navigation__link pages-navigation__link_active` } to='/movies'>
             Фильмы</Link>
         </li>
         <li className='pages-navigation__list-item'>
-          <Link className={`pages-navigation__link ${activeSavedMovie && 'pages-navigation__link_active'}` } to='/saved-movies'>
+          <Link className={`pages-navigation__link` } to='/saved-movies'>
             Сохраненные фильмы</Link>
         </li>
+        </Route>
+
+        <Route path={'/saved-movies'}>
+        <li className='pages-navigation__list-item'>
+          <Link className={`pages-navigation__link`} to='/movies'>
+            Фильмы</Link>
+        </li>
+        <li className='pages-navigation__list-item'>
+          <Link className={`pages-navigation__link pages-navigation__link_active` } to='/saved-movies'>
+            Сохраненные фильмы</Link>
+        </li>
+        </Route>
       </ul>
 
     </nav>

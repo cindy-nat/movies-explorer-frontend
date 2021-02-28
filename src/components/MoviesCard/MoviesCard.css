@@ -33,8 +33,7 @@
   text-align: start;
 }
 
-.card__like {
-  background-image: url("../../images/like-button.svg");
+.card__button {
   background-repeat: no-repeat;
   background-position: center;
   background-color:  #313131;
@@ -46,9 +45,16 @@
   padding: 0;
 }
 
-.card__like:hover {
+.card__button:hover {
   opacity: .7;
   cursor: pointer;
+}
+
+.card__button_type_like {
+  background-image: url("../../images/like-button.svg");
+}
+.card__button_type_remove {
+  background-image: url("../../images/remove-button.svg");
 }
 
 .card__duration {

@@ -2,7 +2,7 @@ import React from 'react';
 import './MoviesCard.css';
 import {Route} from "react-router-dom";
 
-function MoviesCard(card, {moviesRoute}) {
+function MoviesCard(card) {
 
   // нужно для измения цвета лайка
   const [isLiked, setIsLiked] = React.useState(false);
@@ -19,7 +19,10 @@ function MoviesCard(card, {moviesRoute}) {
         <h3  className='card__title'>{card.card.nameRU}</h3>
 
         <Route path='/movies'>
-          <button className={`card__like ${isLiked && 'card__liked'}`} onClick={changeLikeColor}></button>
+          <button className={`card__button card__button_type_like ${isLiked && 'card__liked'}`} onClick={changeLikeColor}></button>
+        </Route>
+        <Route path='/saved-movies'>
+          <button className={`card__button card__button_type_remove`}></button>
         </Route>
 
       </div>

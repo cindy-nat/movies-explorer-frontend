@@ -1,4 +1,4 @@
-.movies {
+.saved-movies {
   max-width: 1140px;
   width: 90%;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.movies__text {
+.saved-movies__text {
   font-family: "Inter", "Arial", sans-serif;
   font-size: 15px;
   font-style: normal;
@@ -17,17 +17,17 @@
 }
 
 @media screen and (max-width: 768px){
-  .movies {
+  .saved-movies {
     width: 93%;
   }
 }
 
 @media screen and (max-width: 500px){
-  .movies {
+  .saved-movies {
     width: 94%;
   }
 
-  .movies__text {
+  .saved-movies__text {
     font-size: 12px;
     line-height: 15px;
   }

@@ -7,6 +7,7 @@ import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
   const history = useHistory();
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path = "/movies">
           <Movies/>
+        </Route>
+        <Route path = "/saved-movies">
+          <SavedMovies/>
         </Route>
         <Route path="*">
           <PageNotFound history={history}/>

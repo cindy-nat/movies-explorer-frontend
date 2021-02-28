@@ -2,20 +2,19 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList({ movies, buttonClass, moviesRoute }) {
+function MoviesCardList({ movies, generalClass }) {
 
 
   return (
     <>
-    <ul className={`movies-list ${buttonClass}__list`}>
+    <ul className={`movies-list ${generalClass}__list`}>
       {
-        movies.map((card)=> (<MoviesCard card = {card}
-                                         moviesRoute={moviesRoute}/>
+        movies.map((card)=> (<MoviesCard card = {card}/>
           )
         )
       }
     </ul>
-  <button type='button' className={`additional-button ${buttonClass}__button`}>Ещё</button>
+  <button type='button' className={`additional-button ${generalClass}__button`}>Ещё</button>
     </>
 );
 }
