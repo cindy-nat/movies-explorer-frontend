@@ -44,3 +44,18 @@
   }
 }
 
+@media screen and (max-width: 500px){
+  .movies__list {
+    grid-template-columns: minmax(300px, 300px);
+    row-gap: 34px;
+  }
+
+  .movies__list {
+    margin-top: 40px;
+  }
+
+  .additional-button {
+    min-width: 240px;
+  }
+}
+

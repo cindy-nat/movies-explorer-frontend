@@ -70,6 +70,22 @@
   .card__photo {
     height: 190px;
     width: 339px;
-    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card__photo {
+    height: 168px;
+    width: 300px;
+  }
+
+  .card__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .card__duration {
+    font-size: 10px;
+    line-height: 12px;
   }
 }

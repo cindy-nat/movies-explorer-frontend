@@ -56,3 +56,15 @@
     margin-bottom: 40px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .search-form__input {
+    width: 80%;
+    padding: 13px;
+    box-sizing: border-box;
+  }
+
+  .search-form__container {
+    margin-bottom: 47px;
+  }
+}

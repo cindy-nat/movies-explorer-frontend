@@ -63,3 +63,10 @@
   margin: 0 auto 0 12px;
   color: #FFFFFF;
 }
+
+@media screen and (max-width: 500px) {
+  .filter__text {
+    font-size: 11px;
+  }
+}
+

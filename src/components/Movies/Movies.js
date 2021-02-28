@@ -35,21 +35,21 @@ function Movies() {
       "duration": '1ч 42м',
       "image": picture
     },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
+    // {
+    //   "nameRU": "33 слова о дизайне",
+    //   "duration": '1ч 42м',
+    //   "image": picture
+    // },
+    // {
+    //   "nameRU": "33 слова о дизайне",
+    //   "duration": '1ч 42м',
+    //   "image": picture
+    // },
+    // {
+    //   "nameRU": "33 слова о дизайне",
+    //   "duration": '1ч 42м',
+    //   "image": picture
+    // },
     // {
     //   "nameRU": "33 слова о дизайне",
     //   "duration": '1ч 42м',
