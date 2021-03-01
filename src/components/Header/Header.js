@@ -45,7 +45,7 @@ function Header({ headerText, activeMovie, activeSavedMovie }) {
             <Navigation isMenuOpen ={isMenuOpen}/>
             <Link to='./profile' className='header__link'>Аккаунт
               <span className='header__icon-container'>
-                <img className='header__person-icon' src={personIcon}/>
+                <img className='header__person-icon' src={personIcon} alt='иконка человека'/>
               </span>
             </Link>
           </div>
