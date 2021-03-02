@@ -13,7 +13,7 @@ function MoviesCard(card) {
   }}
 
   return (
-    <div className='card'>
+    <li className='card'>
       <img className='card__photo' src={card.card.image} alt={card.card.nameRU}/>
       <div  className='card__container'>
         <h3  className='card__title'>{card.card.nameRU}</h3>
@@ -27,7 +27,7 @@ function MoviesCard(card) {
 
       </div>
       <p  className='card__duration'>{card.card.duration}</p>
-    </div>
+    </li>
   );
 }
 
