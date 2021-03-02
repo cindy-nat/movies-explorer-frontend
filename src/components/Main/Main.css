@@ -1,0 +1,8 @@
+.main-page {
+  font-family: "Inter", "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #202020;
+  align-items: center;
+  align-self: stretch;
+}

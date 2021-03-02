@@ -1,0 +1,158 @@
+.project {
+  font-family: "Inter", "Arial", sans-serif;
+  min-height: 608px;
+  max-width: 1280px;
+}
+
+.project__title {
+  margin: 0 auto;
+  width: 89%;
+  border-bottom: 1px solid #DADADA;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  color: #FFFFFF;
+  padding: 110px 0 23px;
+}
+
+.project__table {
+  margin: 70px auto 110px;
+  width: 89%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+  color: #FFFFFF;
+}
+
+.project__table-title {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 26px;
+  letter-spacing: -0.04em;
+}
+
+.project__table-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.project__timeline {
+  width: 89%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 20% auto;
+  row-gap: 14px;
+}
+
+.project__line {
+  background-color: #3DDC84;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project__line_part_backend {
+  background-color: #3DDC84;
+}
+
+.project__line_part_frontend {
+  background-color: #303030;
+}
+
+.project__line-text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+  margin: 0;
+}
+
+.project__line-text_part_frontend {
+  color: #FFFFFF;
+}
+
+.project__line-text_part_underline {
+  color: #8B8B8B;
+}
+
+@media screen and (max-width: 768px) {
+  .project {
+    min-height: 585px;
+  }
+
+  .project__title {
+    padding-top: 90px;
+    width: 87%;
+  }
+
+  .project__table {
+    margin-bottom: 93px;
+    column-gap: 30px;
+    width: 87%;
+  }
+
+  .project__table-title {
+    margin: 0 0 22px;
+  }
+
+  .project__table-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .project__timeline {
+    width: 87%;
+  }
+
+}
+
+
+@media screen and (max-width: 500px) {
+  .project {
+    min-height: 641px;
+  }
+
+  .project__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 70px 0 28px;
+    width: 89%;
+  }
+
+  .project__table {
+    width: 89%;
+    margin: 60px auto;
+    grid-template-columns: 1fr;
+    row-gap: 56px;
+  }
+
+  .project__table-title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 16px;
+  }
+
+  .project__table-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .project__timeline {
+    width: 89%;
+    grid-template-columns: 35% auto;
+    row-gap: 10px;
+  }
+
+  .project__line-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
