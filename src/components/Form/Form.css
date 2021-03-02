@@ -45,6 +45,10 @@
   color: #8B8B8B;
 }
 
+.form__input:focus {
+  opacity: .8;
+}
+
 .form__input_error {
   color: #EE3465;
 }

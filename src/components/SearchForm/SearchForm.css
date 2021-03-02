@@ -34,6 +34,10 @@
   color: #8B8B8B;
 }
 
+.search-form__input:focus {
+  opacity: .8;
+}
+
 .search-form__submit-button {
   background-color: #4285F4;
   border-radius: 8px;
@@ -46,6 +50,11 @@
   background-position: center;
   padding: 0;
   margin: 0 0 0 10px;
+}
+
+.search-form__submit-button:hover {
+  opacity: .7;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
