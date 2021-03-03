@@ -8,9 +8,11 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import { register } from '../../utils/MainApi';
 
 function App() {
   const history = useHistory();
+  const [isRegisteredError, setIsRegisteredError] = React.useState(false);
 
   // получение данных с API и утановка их в стейт переменные
   let name = 'Виталий';
@@ -21,6 +23,19 @@ function App() {
       history.push('/');
     }
 
+  // регистрация пользователя
+  const handleRegister = (email, password, name) => {
+    register(email, password, name)
+      .then(data => {
+        if(data) {
+          history.push('/');
+        }
+      })
+      .catch(err => {
+        setIsRegisteredError(true);
+      });
+  }
+
   return (
     <div className="page">
       <Switch>
@@ -28,7 +43,7 @@ function App() {
           <Main/>
         </Route>
         <Route path = "/signup">
-          <Register/>
+          <Register handleRegister ={handleRegister} isRegisteredError = {isRegisteredError}/>
         </Route>
         <Route path = "/signin">
           <Login/>
