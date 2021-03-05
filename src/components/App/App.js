@@ -8,7 +8,10 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import { register } from '../../utils/MainApi';
+import { register, authorize, getInfo, logout } from '../../utils/MainApi';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
+import Header from "../Header/Header";
+
 
 function App() {
   const history = useHistory();
@@ -38,32 +41,33 @@ function App() {
 
   return (
     <div className="page">
-      <Switch>
-        <Route exact path = "/">
-          <Main/>
-        </Route>
-        <Route path = "/signup">
-          <Register handleRegister ={handleRegister} isRegisteredError = {isRegisteredError}/>
-        </Route>
-        <Route path = "/signin">
-          <Login/>
-        </Route>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header isLoggedIn = {isLoggedIn}/>
+        <Switch>
+          <Route exact path = "/">
+            <Main/>
+          </Route>
+          <Route path = "/signup">
+            <Register handleRegister ={handleRegister} isRegisteredError = {isRegisteredError}/>
+          </Route>
+          <Route path = "/signin">
+            <Login handleLogin = {handleLogin} isLoginError = {isLoginError}/>
+          </Route>
 
-        <Route path = "/profile">
-          <Profile name = {name}
-                   email = {email}
-                   handleSignOut = { handleSignOut }/>
-        </Route>
-        <Route path = "/movies">
-          <Movies/>
-        </Route>
-        <Route path = "/saved-movies">
-          <SavedMovies/>
-        </Route>
-        <Route path="*">
-          <PageNotFound history={history}/>
-        </Route>
-      </Switch>
+          <Route path = "/profile">
+            <Profile handleSignOut = { handleSignOut }/>
+          </Route>
+          <Route path = "/movies">
+            <Movies/>
+          </Route>
+          <Route path = "/saved-movies">
+            <SavedMovies/>
+          </Route>
+          <Route path="*">
+            <PageNotFound history={history}/>
+          </Route>
+        </Switch>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
