@@ -86,6 +86,7 @@
     height: 1024px;
     background-color: #000000;
     opacity: .3;
+    z-index: 1;
   }
 
   .header__link {
