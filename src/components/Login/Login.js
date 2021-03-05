@@ -1,17 +1,30 @@
 import React from 'react';
 import './Login.css';
-import Header from "../Header/Header";
 import Form from "../Form/Form";
+import { useFormWithValidation } from '../../Hooks/useFormWithValidation';
 
-function Login() {
+
+function Login({handleLogin, isLoginError}) {
+  const formWithValidation = useFormWithValidation();
+  const {email, password} = formWithValidation.values;
+
+  const submitHandle = (event) => {
+    event.preventDefault();
+    handleLogin(email, password);
+    formWithValidation.resetForm();
+  }
+
+
   return (
     <>
-    <Header headerText='Рады видеть!'/>
     <Form formName = 'login'
           submitButton = 'Войти'
           formText = 'Ещё не зарегистрированы?'
           link = 'signup'
-          linkText = 'Регистрация'>
+          linkText = 'Регистрация'
+          formData = {formWithValidation}
+          onSubmit = {submitHandle}
+          isLoginError={isLoginError}>
     </Form>
     </>
   );

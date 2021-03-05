@@ -1,12 +1,9 @@
 import React from 'react';
 import './Profile.css';
-import Header from "../Header/Header";
 
 function Profile({ name, handleSignOut, email }) {
 
   return (
-    <>
-      <Header/>
       <section className='profile'>
         <h2 className='profile__title'>Привет, {name}!</h2>
         <form className='profile__form' name='edit-form'></form>
@@ -19,7 +16,6 @@ function Profile({ name, handleSignOut, email }) {
         <button type='submit' className='profile__submit-button'>Редактировать</button>
         <button className='profile__exit-button' onClick={handleSignOut}>Выйти из аккаунта</button>
       </section>
-    </>
   );
 }
 

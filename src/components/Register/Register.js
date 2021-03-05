@@ -1,6 +1,5 @@
 import React from 'react';
 import './Register.css';
-import Header from "../Header/Header";
 import Form from "../Form/Form";
 import { useFormWithValidation } from '../../Hooks/useFormWithValidation';
 
@@ -15,9 +14,7 @@ function Register({ handleRegister, isRegisteredError }) {
   }
 
   return (
-    <>
-      <Header headerText='Добро пожаловать!'/>
-      <Form formName = 'register'
+    <Form formName = 'register'
             submitButton = 'Зарегистрироваться'
             formText = 'Уже зарегистрированы?'
             link = 'signin'
@@ -27,7 +24,6 @@ function Register({ handleRegister, isRegisteredError }) {
             isRegisteredError = {isRegisteredError}
       >
       </Form>
-    </>
   );
 }
 
