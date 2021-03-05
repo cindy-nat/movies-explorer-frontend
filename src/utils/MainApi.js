@@ -43,8 +43,19 @@ export const setInfo = ({name, email}) => {
     },      credentials: 'include',
     body: JSON.stringify({
       name,
-      email
+      email,
     })
+  })
+    .then(getResponseData);
+}
+
+export const logout = () => {
+  return fetch(`${MAIN_API_URL}/signout `, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/json"
+    },
   })
     .then(getResponseData);
 }
