@@ -16,28 +16,70 @@ import Header from "../Header/Header";
 function App() {
   const history = useHistory();
   const [isRegisteredError, setIsRegisteredError] = React.useState(false);
-
-  // получение данных с API и утановка их в стейт переменные
-  let name = 'Виталий';
-  let email = 'pochta@yandex.ru';
-
-  // функция необходима для перемещения пользователя на главный экран при логауте
-  const handleSignOut = () => {
-      history.push('/');
-    }
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoginError, setIsLoginError] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
 
   // регистрация пользователя
   const handleRegister = (email, password, name) => {
     register(email, password, name)
       .then(data => {
         if(data) {
-          history.push('/');
+          setIsLoggedIn(true);
+          history.push('/movies');
         }
       })
       .catch(err => {
         setIsRegisteredError(true);
       });
-  }
+  };
+
+  //логин
+  const handleLogin = (email,password) => {
+    authorize(email, password)
+      .then((data) => {
+        if (data) {
+        history.push("/");
+        setIsLoggedIn(true);
+        }
+      })
+      .catch(err=>{
+        setIsLoginError(true);
+        console.log(err);
+      });
+  };
+
+  //проверка зарегестирован ли пользователь
+  const isLoggedInCheck = () => {
+    getInfo()
+      .then(data=>{
+        if(data) {
+          setCurrentUser(data);
+          setIsLoggedIn(true);
+          history.push("/movies");
+        }
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+  };
+  React.useEffect(() => {
+    isLoggedInCheck();
+  },[isLoggedIn]);
+
+  // логаут
+  const handleSignOut = () => {
+    logout().then(() => {
+      {
+        history.push('/');
+        setIsLoggedIn(false);
+      }
+    })
+      .catch(err=>{
+      console.log(err);
+    })
+
+  };
 
   return (
     <div className="page">

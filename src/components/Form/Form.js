@@ -4,7 +4,7 @@ import {Link, Route} from "react-router-dom";
 
 
 
-function Form({ formName, submitButton, formText, link, linkText, formData, onSubmit, isRegisteredError }) {
+function Form({ formName, submitButton, formText, link, linkText, formData, onSubmit, isRegisteredError, isLoginError }) {
   const {values, handleChange, errors, isValid, isClicked, onBlur} = formData
 
   return (
@@ -48,6 +48,7 @@ function Form({ formName, submitButton, formText, link, linkText, formData, onSu
       </div>
       <div className='form__input-container'>
         {isRegisteredError && <p className='form__text-error'>Произошла ошибка при регистрации</p>}
+        {isLoginError && <p className='form__text-error'>Вы не авторизированы</p>}
         <button disabled={!isValid} type='submit' className='form__button'>{submitButton}</button>
         <p className="form__text">{formText}<Link to={`/${link}`} className="form__link">{linkText}</Link></p>
       </div>
