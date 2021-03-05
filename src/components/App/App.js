@@ -11,6 +11,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import { register, authorize, getInfo, logout } from '../../utils/MainApi';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from "../Header/Header";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
       .then(data=>{
         if(data) {
           setCurrentUser(data);
+          console.log(currentUser);
           setIsLoggedIn(true);
           history.push("/movies");
         }
@@ -96,15 +98,15 @@ function App() {
             <Login handleLogin = {handleLogin} isLoginError = {isLoginError}/>
           </Route>
 
-          <Route path = "/profile">
-            <Profile handleSignOut = { handleSignOut }/>
-          </Route>
-          <Route path = "/movies">
-            <Movies/>
-          </Route>
-          <Route path = "/saved-movies">
-            <SavedMovies/>
-          </Route>
+          <ProtectedRoute path = "/profile"
+                          component={Profile}
+                          handleSignOut = {handleSignOut}
+                          isLoggedIn={isLoggedIn}/>
+          <ProtectedRoute path = "/movies" component={Movies}
+                          isLoggedIn={isLoggedIn}/>
+          <ProtectedRoute path = "/saved-movies" component={SavedMovies}
+                          isLoggedIn={isLoggedIn}/>
+
           <Route path="*">
             <PageNotFound history={history}/>
           </Route>
