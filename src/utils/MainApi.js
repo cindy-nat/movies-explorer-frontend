@@ -35,7 +35,7 @@ export const getInfo = () => {
 }
 
 // отправка новых данных о пользователе на сервер
-export const setInfo = ({name, email}) => {
+export const setInfo = (name, email) => {
   return fetch(`${MAIN_API_URL}/users/me`, {
     method: 'PATCH',
     headers: {

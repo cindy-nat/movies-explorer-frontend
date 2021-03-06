@@ -8,7 +8,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import { register, authorize, getInfo, logout } from '../../utils/MainApi';
+import { register, authorize, getInfo, logout, setInfo } from '../../utils/MainApi';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from "../Header/Header";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -19,7 +19,27 @@ function App() {
   const [isRegisteredError, setIsRegisteredError] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isLoginError, setIsLoginError] = React.useState(false);
+  const [isEditError, setIsEditError] = React.useState(false);
+  const [isEditSuccess, setIsEditSuccess] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+
+  //проверка зарегестирован ли пользователь
+  const isLoggedInCheck = () => {
+    getInfo()
+      .then(data=>{
+        if(data) {
+          setCurrentUser(data);
+          setIsLoggedIn(true);
+          history.push("/movies");
+        }
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+  };
+  React.useEffect(() => {
+    isLoggedInCheck();
+  },[isLoggedIn]);
 
   // регистрация пользователя
   const handleRegister = (email, password, name) => {
@@ -50,25 +70,6 @@ function App() {
       });
   };
 
-  //проверка зарегестирован ли пользователь
-  const isLoggedInCheck = () => {
-    getInfo()
-      .then(data=>{
-        if(data) {
-          setCurrentUser(data);
-          console.log(currentUser);
-          setIsLoggedIn(true);
-          history.push("/movies");
-        }
-      })
-      .catch(err=>{
-        console.log(err);
-      })
-  };
-  React.useEffect(() => {
-    isLoggedInCheck();
-  },[isLoggedIn]);
-
   // логаут
   const handleSignOut = () => {
     logout().then(() => {
@@ -77,11 +78,27 @@ function App() {
         setIsLoggedIn(false);
       }
     })
-      .catch(err=>{
+      .catch((err) => {
       console.log(err);
     })
-
   };
+
+  // изменить данные пользователя
+  const changeProfileInfo = (name, email) => {
+    setInfo(name, email)
+      .then((info) => {
+      setCurrentUser(info);
+      setIsEditSuccess(true);
+        setIsEditError(false);
+        setTimeout(function removeSuccessMessage(){
+          setIsEditSuccess(false);
+        }, 5000);
+    })
+      .catch((err) => {
+        console.log(err);
+        setIsEditError(true);
+      })
+  }
 
   return (
     <div className="page">
@@ -101,6 +118,9 @@ function App() {
           <ProtectedRoute path = "/profile"
                           component={Profile}
                           handleSignOut = {handleSignOut}
+                          changeProfileInfo = {changeProfileInfo}
+                          isEditSuccess = {isEditSuccess}
+                          isEditError = {isEditError}
                           isLoggedIn={isLoggedIn}/>
           <ProtectedRoute path = "/movies" component={Movies}
                           isLoggedIn={isLoggedIn}/>

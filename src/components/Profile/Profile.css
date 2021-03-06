@@ -17,6 +17,8 @@
 
 .profile__form {
   min-width: 410px;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile__form-label {
@@ -61,11 +63,37 @@
   background-color: transparent;
   border: none;
   outline: none;
+  align-self: center;
+  cursor: pointer;
+}
+
+.profile__submit-button:disabled {
+  cursor: not-allowed;
+  color: #2f2f2f;
 }
 
 .profile__submit-button:hover {
   opacity: .7;
-  cursor: pointer;
+}
+
+.profile__form-error {
+  color: #EE3465;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 5px 0 0;
+  align-self: flex-end;
+}
+
+.profile__form-success {
+  color: #FFFFFF;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 5px 0 0;
+  align-self: flex-end;
 }
 
 .profile__exit-button {
