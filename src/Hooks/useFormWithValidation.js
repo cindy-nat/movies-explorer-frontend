@@ -5,22 +5,22 @@ export const useFormWithValidation = () => {
   const [values, setValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
-  const [isClicked, setIsClicked] = React.useState(false);
+  const [isFocused, setIsFocused] = React.useState(false);
 
-  React.useEffect (()=> {
-    setErrors(validateForm(values));
-  }, [values]);
 
-  const onBlur = () => {
-    setIsClicked(true);
+  const onFocus = () => {
+    setIsFocused(true);
   }
 
   const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
     const value = target.value;
+    setErrors(validateForm(name, value));
     setValues({...values, [name]: value});
-    setIsValid(target.closest("form").checkValidity());
+    if(Object.keys(errors).length === 0){
+      setIsValid(target.closest("form").checkValidity());
+  }
   };
 
   const resetForm = useCallback(
@@ -31,5 +31,5 @@ export const useFormWithValidation = () => {
     [setErrors, setIsValid]
   );
 
-  return { values, handleChange, errors, isValid, resetForm, onBlur, isClicked };
+  return { values, handleChange, errors, isValid, resetForm, onFocus, isFocused, setValues };
 }

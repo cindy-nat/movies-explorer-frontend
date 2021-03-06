@@ -5,7 +5,7 @@ import {Link, Route} from "react-router-dom";
 
 
 function Form({ formName, submitButton, formText, link, linkText, formData, onSubmit, isRegisteredError, isLoginError }) {
-  const {values, handleChange, errors, isValid, isClicked, onBlur} = formData
+  const {values, handleChange, errors, isValid, isFocused, onFocus} = formData
 
   return (
     <>
@@ -20,9 +20,9 @@ function Form({ formName, submitButton, formText, link, linkText, formData, onSu
                  minLength='2'
                  maxLength='30'
                  onChange={handleChange}
-                 onBlur={onBlur}
+                 onFocus={onFocus}
                  value={values.name || ''}/>
-          <span className="form__error">{isClicked && errors.name}</span>
+          <span className="form__error">{isFocused && errors.name}</span>
         </Route>
 
         <label htmlFor='email' className='form__label'> E-mail</label>
@@ -31,9 +31,9 @@ function Form({ formName, submitButton, formText, link, linkText, formData, onSu
                name='email'
                required
                onChange={handleChange}
-               onBlur={onBlur}
+               onFocus={onFocus}
                value={values.email || ''}/>
-        <span className="form__error">{isClicked && errors.email}</span>
+        <span className="form__error">{isFocused && errors.email}</span>
 
         <label htmlFor='password' className='form__label'>Пароль</label>
         <input type='password'
@@ -41,10 +41,10 @@ function Form({ formName, submitButton, formText, link, linkText, formData, onSu
                name='password'
                required
                onChange={handleChange}
-               onBlur={onBlur}
+               onFocus={onFocus}
                value={values.password || ''}
         />
-        <span className="form__error">{isClicked && errors.password}</span>
+        <span className="form__error">{isFocused && errors.password}</span>
       </div>
       <div className='form__input-container'>
         {isRegisteredError && <p className='form__text-error'>Произошла ошибка при регистрации</p>}
