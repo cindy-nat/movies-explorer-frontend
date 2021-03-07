@@ -16,6 +16,29 @@
   align-self: start;
 }
 
+.movies__additional-button {
+  height: 36px;
+  min-width: 320px;
+  border-radius: 6px;
+  background-color: #2F2F2F;
+  border: none;
+  outline: none;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 0;
+  margin: 60px 0 98px;
+}
+
+.movies__additional-button:hover {
+  opacity: .7;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px){
   .movies {
     width: 93%;
@@ -30,6 +53,10 @@
   .movies__text {
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .movies__additional-button {
+    min-width: 240px;
   }
 }
 

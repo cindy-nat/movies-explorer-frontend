@@ -1,21 +1,21 @@
 import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList({ movies, generalClass }) {
-
+function MoviesCardList({ movies, generalClass, isLoading }) {
 
   return (
-    <>
     <ul className={`movies-list ${generalClass}__list`}>
-      {
-        movies.map((card)=> (<MoviesCard card = {card}/>
+      {isLoading && <Preloader/>}
+      {!isLoading &&
+        movies.map((card)=> (<MoviesCard
+              key          = {card.id}
+              card         = {card}/>
           )
         )
       }
     </ul>
-  <button type='button' className={`additional-button ${generalClass}__button`}>Ещё</button>
-    </>
 );
 }
 

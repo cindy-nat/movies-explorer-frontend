@@ -9,6 +9,7 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import { register, authorize, getInfo, logout, setInfo } from '../../utils/MainApi';
+import { getMovies } from '../../utils/MoviesApi';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from "../Header/Header";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -22,6 +23,8 @@ function App() {
   const [isEditError, setIsEditError] = React.useState(false);
   const [isEditSuccess, setIsEditSuccess] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [movies, setMovies] = React.useState({});
+  const [isLoading, setIsLoading] = React.useState(false);
 
   //проверка зарегестирован ли пользователь
   const isLoggedInCheck = () => {
@@ -39,6 +42,12 @@ function App() {
   };
   React.useEffect(() => {
     isLoggedInCheck();
+    setIsLoading(true);
+    getMovies()
+      .then((moviesInfo)=>{
+        setMovies(moviesInfo);
+      })
+      .finally(() => setIsLoading(false));
   },[isLoggedIn]);
 
   // регистрация пользователя
@@ -100,6 +109,18 @@ function App() {
       })
   }
 
+  // получение всех фильмов с moviesApi
+  const getAllMovies = () => {
+    getMovies()
+      .then((moviesData) => {
+        setMovies(moviesData);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  };
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -123,7 +144,9 @@ function App() {
                           isEditError = {isEditError}
                           isLoggedIn={isLoggedIn}/>
           <ProtectedRoute path = "/movies" component={Movies}
-                          isLoggedIn={isLoggedIn}/>
+                          isLoggedIn={isLoggedIn}
+                          movies = {movies}
+                          isLoading = {isLoading}/>
           <ProtectedRoute path = "/saved-movies" component={SavedMovies}
                           isLoggedIn={isLoggedIn}/>
 

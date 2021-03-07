@@ -3,99 +3,17 @@ import './Movies.css';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import picture from '../../images/pic__COLOR_pic.png'
-import Preloader from "../Preloader/Preloader";
 
-function Movies() {
-  // Данные с фильмами, которые будут получены после фильтрации
-  const movies = [{
-    "nameRU": "33 слова о дизайне",
-    "duration": '1ч 42м',
-    "image": picture
-  },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "Дженис: Маленькая девочка грустит",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-  ]
+function Movies({movies, isLoading}) {
+  const [filteredMovies, setFilteredMovies] = React.useState({});
+
   return (
     <>
       <section className='movies'>
-        <SearchForm/>
-        {/*<Preloader/>*/}
+        <SearchForm setFilteredMovies ={setFilteredMovies}/>
         {/*<p className='movies__text'>Фильмы не найдены</p>*/}
-        <MoviesCardList movies={movies} generalClass='movies'/>
+        <MoviesCardList movies={movies} generalClass='movies' isLoading = {isLoading}/>
+        <button type='button' className='movies__additional-button'>Ещё</button>
       </section>
       <Footer/>
     </>
