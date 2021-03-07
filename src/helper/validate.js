@@ -24,7 +24,13 @@ export const validateForm = (name, value) => {
     } else if (value.length<1) {
       errors = ({[name]: 'Имя должно содержать 2 и более символа'});
     }
-
   }
+
+
+    if(name === 'search') {
+      if(!value) {
+      errors = ({[name]: 'Введите данные для поиска'});
+      }
+    }
   return errors;
 }
