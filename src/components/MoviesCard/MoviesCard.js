@@ -1,8 +1,9 @@
 import React from 'react';
 import './MoviesCard.css';
 import {Route} from "react-router-dom";
+import {imageCheck, convertMinutesToHours} from '../../helper/cardFunctions';
 
-function MoviesCard(card) {
+function MoviesCard({card}) {
 
   // нужно для измения цвета лайка
   const [isLiked, setIsLiked] = React.useState(false);
@@ -14,19 +15,21 @@ function MoviesCard(card) {
 
   return (
     <li className='card'>
-      <img className='card__photo' src={card.card.image} alt={card.card.nameRU}/>
+      <a href={card.trailerLink} target='_blank'>
+        <img className='card__photo' src={imageCheck(card.image)} alt={card.nameRU}/>
+      </a>
       <div  className='card__container'>
-        <h3  className='card__title'>{card.card.nameRU}</h3>
+        <h3  className='card__title'>{card.nameRU}</h3>
 
         <Route path='/movies'>
-          <button className={`card__button card__button_type_like ${isLiked && 'card__liked'}`} onClick={changeLikeColor}></button>
+          <button className={`card__button card__button_type_like ${isLiked && 'card__liked'}`} onClick={changeLikeColor}/>
         </Route>
         <Route path='/saved-movies'>
-          <button className={`card__button card__button_type_remove`}></button>
+          <button className={`card__button card__button_type_remove`}/>
         </Route>
 
       </div>
-      <p  className='card__duration'>{card.card.duration}</p>
+      <p  className='card__duration'>{convertMinutesToHours(card.duration)}</p>
     </li>
   );
 }
