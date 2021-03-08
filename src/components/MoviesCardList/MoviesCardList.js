@@ -1,19 +1,20 @@
 import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList({ movies, generalClass, isLoading }) {
+function MoviesCardList({ movies, generalClass, filteredMovies, moviesIndexShown }) {
 
   return (
     <ul className={`movies-list ${generalClass}__list`}>
-      {isLoading && <Preloader/>}
-      {!isLoading &&
-        movies.map((card)=> (<MoviesCard
-              key          = {card.id}
-              card         = {card}/>
-          )
-        )
+      {
+      filteredMovies.reduce((result, card, i) => {
+        if (i < moviesIndexShown) {
+          result.push(<MoviesCard
+            key          = {card.id}
+            card         = {card}/>);
+        }
+        return result;
+      }, [])
       }
     </ul>
 );
