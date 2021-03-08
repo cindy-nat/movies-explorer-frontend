@@ -3,8 +3,6 @@ import noImage from "../images/No_image_available.svg";
 export const imageCheck = (imageData) => {
   let imageLink;
   if(imageData) {
-    console.log(imageData.url);
-
     imageLink = `https://api.nomoreparties.co${imageData.url}`
   }
   else {
