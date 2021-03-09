@@ -8,7 +8,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import { register, authorize, getInfo, logout, setInfo } from '../../utils/MainApi';
+import { register, authorize, getInfo, logout, setInfo, getSavedMovies, addCard } from '../../utils/MainApi';
 import { getMovies } from '../../utils/MoviesApi';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from "../Header/Header";
@@ -23,8 +23,10 @@ function App() {
   const [isEditError, setIsEditError] = React.useState(false);
   const [isEditSuccess, setIsEditSuccess] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
-  const [movies, setMovies] = React.useState({});
+  const [movies, setMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+
 
   //проверка зарегестирован ли пользователь
   const isLoggedInCheck = () => {
@@ -43,9 +45,10 @@ function App() {
   React.useEffect(() => {
     isLoggedInCheck();
     setIsLoading(true);
-    getMovies()
-      .then((moviesInfo)=>{
+    Promise.all([getMovies(), getSavedMovies()])
+      .then(([moviesInfo, savedMoviesInfo])=>{
         setMovies(moviesInfo);
+        setSavedMovies(savedMoviesInfo);
       })
       .finally(() => setIsLoading(false));
   },[isLoggedIn]);
@@ -85,6 +88,7 @@ function App() {
       {
         history.push('/');
         setIsLoggedIn(false);
+        localStorage.clear();
       }
     })
       .catch((err) => {
@@ -107,19 +111,16 @@ function App() {
         console.log(err);
         setIsEditError(true);
       })
-  }
-
-  // получение всех фильмов с moviesApi
-  const getAllMovies = () => {
-    getMovies()
-      .then((moviesData) => {
-        setMovies(moviesData);
-
-      })
-      .catch((err) => {
-        console.log(err);
-      })
   };
+
+  // добавление фильма в основную базу
+  const createFilm = (card) => {
+    addCard(card)
+      .then((movieInfo) => {
+        setSavedMovies([[movieInfo, ...savedMovies]])
+      })
+      .catch(err => console.log(err));
+  }
 
   return (
     <div className="page">
@@ -146,9 +147,13 @@ function App() {
           <ProtectedRoute path = "/movies" component={Movies}
                           isLoggedIn={isLoggedIn}
                           movies = {movies}
-                          isLoading = {isLoading}/>
+                          isLoading = {isLoading}
+                          createFilm = {createFilm}
+                          savedMovies = {savedMovies}
+                         />
           <ProtectedRoute path = "/saved-movies" component={SavedMovies}
-                          isLoggedIn={isLoggedIn}/>
+                          isLoggedIn={isLoggedIn}
+                          savedMovies = {savedMovies}/>
 
           <Route path="*">
             <PageNotFound history={history}/>

@@ -1,45 +1,23 @@
 import React from 'react';
 import './SavedMovies.css';
-import picture from "../../images/pic__COLOR_pic.png";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 
-function SavedMovies() {
-  // Данные с фильмами, которые будут получены после фильтрации
-  const movies = [{
-    "nameRU": "33 слова о дизайне",
-    "duration": '1ч 42м',
-    "image": picture
-  },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "Дженис: Маленькая девочка грустит",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-    {
-      "nameRU": "33 слова о дизайне",
-      "duration": '1ч 42м',
-      "image": picture
-    },
-  ]
+function SavedMovies({ savedMovies }) {
+
   return (
     <>
       <section className='saved-movies'>
         <SearchForm/>
-        {/*<Preloader/>*/}
-        {/*<p className='saved-movies__text'>Фильмы не найдены</p>*/}
-        <MoviesCardList movies={movies} generalClass='saved-movies'/>
+
+
+        { savedMovies.length === 0 &&
+        <p className='saved-movies__text'>Фильмы не найдены</p>}
+
+        { savedMovies.length !== 0 &&
+        <MoviesCardList savedMovies={savedMovies} generalClass='saved-movies'/>
+        }
       </section>
       <Footer/>
     </>

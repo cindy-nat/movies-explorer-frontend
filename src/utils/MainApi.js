@@ -61,7 +61,7 @@ export const logout = () => {
 }
 
 // получение фильмов
-export const getMovies = () => {
+export const getSavedMovies = () => {
   return fetch(`${MAIN_API_URL}/movies`, {
     headers: {
       "Content-Type": "application/json"
@@ -71,6 +71,7 @@ export const getMovies = () => {
 
 //добавление карточки на сервер
 export const addCard = (data) => {
+  console.log(data);
   return fetch(`${MAIN_API_URL}/movies `, {
     method: 'POST',
     headers: {
@@ -82,12 +83,12 @@ export const addCard = (data) => {
       duration: data.duration,
       year: data.year,
       description: data.description,
-      image: data.image.url,
+      image: data.image,
       trailer: data.trailerLink,
       movieId: data.id,
       nameRU: data.nameRU,
       nameEN: data.nameEN,
-      thumbnail: data.image.thumbnail.url
+      thumbnail: data.image
     })
   })
     .then(getResponseData);
