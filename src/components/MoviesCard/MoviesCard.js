@@ -4,19 +4,26 @@ import {Route} from "react-router-dom";
 import {imageCheck, convertMinutesToHours} from '../../helper/cardFunctions';
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
-function MoviesCard({card, createFilm, savedMovies }) {
+function MoviesCard({card, createFilm, savedMovies, deleteFilm }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [isLiked, setIsLiked] = React.useState(false);
 
-  const handleClick = () => {
+  const handleClickLikeButton = () => {
     const imageLink = imageCheck(card.image);
     if(!isLiked) {
-    createFilm ({...card, image: imageLink});
-    setIsLiked(true);
+      createFilm ({...card, image: imageLink});
+      setIsLiked(true);
+
     }
     else {
+      let movieItem = savedMovies.filter((savedMovie)=> savedMovie.movieId === card.id);
+      deleteFilm(movieItem[0]._id);
       setIsLiked(false);
     }
+  }
+
+  const handleClickDeleteButton = () => {
+      deleteFilm(card._id);
   }
 
   React.useEffect(() => {
@@ -44,10 +51,11 @@ function MoviesCard({card, createFilm, savedMovies }) {
         <h3  className='card__title'>{card.nameRU}</h3>
 
         <Route path='/movies'>
-          <button className={`card__button card__button_type_like ${isLiked && 'card__liked'}`} onClick={handleClick}/>
+          <button className={`card__button card__button_type_like ${isLiked && 'card__liked'}`}
+                  onClick={handleClickLikeButton}/>
         </Route>
         <Route path='/saved-movies'>
-          <button className={`card__button card__button_type_remove`}/>
+          <button className={`card__button card__button_type_remove`} onClick={handleClickDeleteButton}/>
         </Route>
 
       </div>

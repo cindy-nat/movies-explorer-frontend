@@ -3,16 +3,18 @@ import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {Route} from "react-router-dom";
 
-function MoviesCardList({ savedMovies, generalClass, filteredMovies, moviesIndexShown, createFilm }) {
+function MoviesCardList({ savedMovies, generalClass, filteredMovies, moviesIndexShown, createFilm, deleteFilm }) {
 
   return (
     <ul className={`movies-list ${generalClass}__list`}>
       <Route path='/saved-movies'>
       {savedMovies.length > 0 &&
-      savedMovies.map(movie => { console.log(movie);
+      savedMovies.map(movie => {
         return (<MoviesCard key = {movie._id}
                                             card = {movie}
-                                            savedMovies = {savedMovies}/>)})
+                                            savedMovies = {savedMovies}
+                                            deleteFilm = {deleteFilm}
+        />)})
       }
       </Route>
 
@@ -25,6 +27,7 @@ function MoviesCardList({ savedMovies, generalClass, filteredMovies, moviesIndex
             card         = {card}
             createFilm = {createFilm}
             savedMovies = {savedMovies}
+            deleteFilm = {deleteFilm}
             />);
         }
         return result;

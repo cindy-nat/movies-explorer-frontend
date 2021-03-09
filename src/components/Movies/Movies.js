@@ -13,7 +13,7 @@ import { CARDS_QUANTITY_MAX,
         CARDS_QUANTITY_SMALL,
         ADDITIONAL_CARDS_QUANTITY_SMALL} from '../../helper/MoviesConstants';
 
-function Movies({movies, isLoading, createFilm, savedMovies}) {
+function Movies({movies, isLoading, createFilm, savedMovies, deleteFilm}) {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [allFilteredMovies, setAllFilteredMovies] = React.useState([]);
   const [shortFilteredMovies, setShortFilteredMovies] = React.useState([]);
@@ -131,6 +131,7 @@ function Movies({movies, isLoading, createFilm, savedMovies}) {
                         moviesIndexShown = {moviesIndexShown}
                         createFilm = {createFilm}
                         savedMovies = {savedMovies}
+                        deleteFilm={deleteFilm}
                         />}
         {(moviesIndexShown !== filteredMovies.length) &&
           <button type='button' className='movies__additional-button' onClick={handleAddCards}>Ещё</button>}

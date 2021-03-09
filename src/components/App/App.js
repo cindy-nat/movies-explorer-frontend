@@ -8,7 +8,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import { register, authorize, getInfo, logout, setInfo, getSavedMovies, addCard } from '../../utils/MainApi';
+import { register, authorize, getInfo, logout, setInfo, getSavedMovies, addCard, deleteCard } from '../../utils/MainApi';
 import { getMovies } from '../../utils/MoviesApi';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import Header from "../Header/Header";
@@ -117,7 +117,17 @@ function App() {
   const createFilm = (card) => {
     addCard(card)
       .then((movieInfo) => {
-        setSavedMovies([[movieInfo, ...savedMovies]])
+        setSavedMovies([movieInfo, ...savedMovies]);
+      })
+      .catch(err => console.log(err));
+  }
+
+  // удаление фильма из основной базы
+  const deleteFilm = (cardId) => {
+    deleteCard(cardId)
+      .then(() => {
+        const newMovies = savedMovies.filter(savedMovie=> savedMovie._id !== cardId);
+        setSavedMovies(newMovies);
       })
       .catch(err => console.log(err));
   }
@@ -150,10 +160,13 @@ function App() {
                           isLoading = {isLoading}
                           createFilm = {createFilm}
                           savedMovies = {savedMovies}
+                          deleteFilm = {deleteFilm}
                          />
           <ProtectedRoute path = "/saved-movies" component={SavedMovies}
                           isLoggedIn={isLoggedIn}
-                          savedMovies = {savedMovies}/>
+                          savedMovies = {savedMovies}
+                          deleteFilm = {deleteFilm}
+          />
 
           <Route path="*">
             <PageNotFound history={history}/>
