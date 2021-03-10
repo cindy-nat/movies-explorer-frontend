@@ -50,6 +50,7 @@ function App() {
         setMovies(moviesInfo);
         setSavedMovies(savedMoviesInfo);
       })
+      .catch(err => console.log(err))
       .finally(() => setIsLoading(false));
   },[isLoggedIn]);
 
