@@ -42,16 +42,29 @@ function App() {
         console.log(err);
       })
   };
+
   React.useEffect(() => {
     isLoggedInCheck();
     setIsLoading(true);
-    Promise.all([getMovies(), getSavedMovies()])
-      .then(([moviesInfo, savedMoviesInfo])=>{
-        setMovies(moviesInfo);
-        setSavedMovies(savedMoviesInfo);
+    getMovies()
+      .then(moviesInfo => {
+        console.log(moviesInfo);
+        if(moviesInfo) {
+        setMovies(moviesInfo)
+        }
       })
       .catch(err => console.log(err))
       .finally(() => setIsLoading(false));
+
+    getSavedMovies()
+      .then((savedMoviesInfo) => {
+        if(savedMoviesInfo) {
+          setSavedMovies(savedMoviesInfo);
+        }
+    })
+      .catch(err => {
+        console.log(err)
+      })
   },[isLoggedIn]);
 
   // регистрация пользователя
