@@ -12,6 +12,8 @@ import { CARDS_QUANTITY_MAX,
         WINDOW_WIDTH_MIDDLE,
         CARDS_QUANTITY_SMALL,
         ADDITIONAL_CARDS_QUANTITY_SMALL} from '../../helper/MoviesConstants';
+import {shortMoviesSearchHandle, moviesSearchHandle} from '../../helper/searchFunctions';
+
 
 function Movies({movies, isLoading, createFilm, savedMovies, deleteFilm}) {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
@@ -23,20 +25,18 @@ function Movies({movies, isLoading, createFilm, savedMovies, deleteFilm}) {
   const [cardQuantity, setCardQuantity] = React.useState(0);
   const [additionalCardQuantity, setAdditionalCardQuantity] = React.useState(0);
 
+  // создаем массив с фильтрованными короткометражками
+  React.useEffect(() => {
+    setShortFilteredMovies(shortMoviesSearchHandle(allFilteredMovies))
+  }, [allFilteredMovies]);
+
   React.useEffect(()=> {
     if(isCheckBoxClicked && filteredMovies) {
-      setFilteredMovies (
-        allFilteredMovies.reduce((result, movieInfo) => {
-        if(movieInfo.duration <= 40) {
-          result.push(movieInfo)
-        }
-       return result;
-      },[]));
-      setShortFilteredMovies(filteredMovies);
+      setFilteredMovies (shortFilteredMovies);
     } else {
       setFilteredMovies(allFilteredMovies);
     }
-  }, [isCheckBoxClicked, allFilteredMovies])
+  }, [isCheckBoxClicked, allFilteredMovies]);
 
   window.addEventListener("resize", resizeThrottler, false);
   let resizeTimeout;
@@ -107,15 +107,24 @@ function Movies({movies, isLoading, createFilm, savedMovies, deleteFilm}) {
   }
   }
 
+  const searchHandle = (searchValue) => {
+    let filteredMovies = moviesSearchHandle(movies, searchValue);
+    setAllFilteredMovies(filteredMovies);
+    setIsFilteredMovies(true);
+    if(filteredMovies.length !== 0) {
+      localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+    }
+    else {
+      localStorage.clear();
+    }
+  }
+
   return (
     <>
       <section className='movies'>
-        <SearchForm setFilteredMovies ={setAllFilteredMovies}
-                    setShortFilteredMovies = {setShortFilteredMovies}
-                    movies = {movies}
-                    setIsFilteredMovies = {setIsFilteredMovies}
-                    setIsCheckBoxClicked = {setIsCheckBoxClicked}
+        <SearchForm setIsCheckBoxClicked = {setIsCheckBoxClicked}
                     isCheckBoxClicked = {isCheckBoxClicked}
+                    searchHandle = {searchHandle}
                     />
 
         {isLoading && <Preloader/>}

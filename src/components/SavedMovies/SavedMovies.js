@@ -3,6 +3,7 @@ import './SavedMovies.css';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import {shortMoviesSearchHandle, moviesSearchHandle} from '../../helper/searchFunctions';
 
 function SavedMovies({ savedMovies, deleteFilm }) {
   const [filteredSavedMovies, setFilteredSavedMovies] = React.useState(savedMovies);
@@ -13,28 +14,19 @@ function SavedMovies({ savedMovies, deleteFilm }) {
 
   // создаем массив с фильтрованными короткометражками
   React.useEffect(() => {
-    // ВЫНЕСТИ В ОТДЕЛЬНУЮ ФУНКЦИЮ
-    setShortFilteredSavedMovies(filteredSavedMovies.reduce((result, movieInfo) => {
-      if(movieInfo.duration <= 40) {
-        result.push(movieInfo);
-      }
-      return result;
-    },[]));
+    setShortFilteredSavedMovies(shortMoviesSearchHandle(filteredSavedMovies))
   }, [filteredSavedMovies]);
 
   React.useEffect(()=> {
     if(isCheckBoxClicked && filteredSavedMovies) {
-      setFilteredSavedMovies (shortFilteredSavedMovies);
+      setFilteredSavedMovies(shortFilteredSavedMovies);
     } else {
       setFilteredSavedMovies(filteredSavedAllMovies);
     }
   }, [isCheckBoxClicked, filteredSavedMovies]);
 
   const searchHandle = (searchValue) => {
-    // можно вынести в отдельную функцию поиска
-    let filteredSavedMovies = savedMovies.filter((movie) => {
-      return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
-    });
+    let filteredSavedMovies = moviesSearchHandle(savedMovies, searchValue);
     setFilteredSavedMovies(filteredSavedMovies);
     setFilteredSavedAllMovies(filteredSavedMovies);
     setIsFilteredMovies(true);

@@ -6,3 +6,5 @@ export const CARDS_QUANTITY_MIDDLE = 8;
 export const WINDOW_WIDTH_MIDDLE = 768;
 export const CARDS_QUANTITY_SMALL = 5;
 export const ADDITIONAL_CARDS_QUANTITY_SMALL = 2;
+
+export const SHORT_FILM_DURATION = 40;

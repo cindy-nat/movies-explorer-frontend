@@ -3,13 +3,21 @@ import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {Route} from "react-router-dom";
 
-function MoviesCardList({ savedMovies, generalClass, filteredMovies, moviesIndexShown, createFilm, deleteFilm }) {
+function MoviesCardList({ savedMovies, generalClass, filteredMovies, moviesIndexShown, createFilm, deleteFilm, isFilteredMovies, filteredSavedMovies }) {
 
   return (
     <ul className={`movies-list ${generalClass}__list`}>
       <Route path='/saved-movies'>
-      {savedMovies.length > 0 &&
+      {savedMovies.length > 0 && !isFilteredMovies &&
       savedMovies.map(movie => {
+        return (<MoviesCard key = {movie._id}
+                                            card = {movie}
+                                            savedMovies = {savedMovies}
+                                            deleteFilm = {deleteFilm}
+        />)})
+      }
+      {isFilteredMovies &&
+      filteredSavedMovies.map(movie => {
         return (<MoviesCard key = {movie._id}
                                             card = {movie}
                                             savedMovies = {savedMovies}

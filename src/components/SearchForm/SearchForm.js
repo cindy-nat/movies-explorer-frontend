@@ -3,7 +3,7 @@ import './SearchForm.css';
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import {useFormWithValidation} from "../../Hooks/useFormWithValidation";
 
-function SearchForm({setFilteredMovies, movies, setIsFilteredMovies, setIsCheckBoxClicked, isCheckBoxClicked, setShortFilteredMovies}) {
+function SearchForm({setIsCheckBoxClicked, isCheckBoxClicked, searchHandle}) {
   const formData = useFormWithValidation();
   const {search} = formData.values;
   const {handleChange, errors, isFocused, onFocus} = formData;
@@ -11,17 +11,7 @@ function SearchForm({setFilteredMovies, movies, setIsFilteredMovies, setIsCheckB
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let filteredMovies = movies.filter((movie) => {
-      return movie.nameRU.toLowerCase().includes(search.toLowerCase())
-    });
-    setFilteredMovies(filteredMovies);
-    setIsFilteredMovies(true);
-    if(filteredMovies.length !== 0) {
-      localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
-    }
-    else {
-      localStorage.clear();
-    }
+    searchHandle(search);
   }
 
   return (
