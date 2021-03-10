@@ -16,7 +16,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 
 function App() {
-  const history = useHistory();
+  let history = useHistory();
   const [isRegisteredError, setIsRegisteredError] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isLoginError, setIsLoginError] = React.useState(false);
@@ -27,6 +27,9 @@ function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
+  React.useEffect(() => {
+    isLoggedInCheck();
+  }, []);
 
   //проверка зарегестирован ли пользователь
   const isLoggedInCheck = () => {
@@ -35,7 +38,6 @@ function App() {
         if(data) {
           setCurrentUser(data);
           setIsLoggedIn(true);
-          history.push("/movies");
         }
       })
       .catch(err=>{
@@ -44,27 +46,36 @@ function App() {
   };
 
   React.useEffect(() => {
-    isLoggedInCheck();
-    setIsLoading(true);
-    getMovies()
-      .then(moviesInfo => {
-        console.log(moviesInfo);
-        if(moviesInfo) {
-        setMovies(moviesInfo)
-        }
-      })
-      .catch(err => console.log(err))
-      .finally(() => setIsLoading(false));
+      if(isLoggedIn) {
+        getInfo()
+          .then(data=>{
+            if(data) {
+              setCurrentUser(data);
+            }
+          })
+          .catch(err=>{console.log(err);})
 
-    getSavedMovies()
-      .then((savedMoviesInfo) => {
-        if(savedMoviesInfo) {
-          setSavedMovies(savedMoviesInfo);
-        }
-    })
-      .catch(err => {
-        console.log(err)
+      setIsLoading(true);
+      getMovies()
+        .then(moviesInfo => {
+          if(moviesInfo) {
+            setMovies(moviesInfo)
+          }
+        })
+        .catch(err => console.log(err))
+        .finally(() => setIsLoading(false));
+
+      getSavedMovies()
+        .then((savedMoviesInfo) => {
+          if(savedMoviesInfo) {
+            setSavedMovies(savedMoviesInfo);
+          }
       })
+        .catch(err => {
+          console.log(err)
+        })
+        history.push("/movies");
+      }
   },[isLoggedIn]);
 
   // регистрация пользователя
@@ -72,8 +83,7 @@ function App() {
     register(email, password, name)
       .then(data => {
         if(data) {
-          setIsLoggedIn(true);
-          history.push('/movies');
+          handleLogin(email,password);
         }
       })
       .catch(err => {
@@ -86,7 +96,6 @@ function App() {
     authorize(email, password)
       .then((data) => {
         if (data) {
-        history.push("/");
         setIsLoggedIn(true);
         }
       })
