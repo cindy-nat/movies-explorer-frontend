@@ -71,24 +71,23 @@ export const getSavedMovies = () => {
 
 //добавление карточки на сервер
 export const addCard = (data) => {
-  console.log(data);
   return fetch(`${MAIN_API_URL}/movies `, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"
     },      credentials: 'include',
     body: JSON.stringify({
-      country: data.country,
-      director: data.director,
-      duration: data.duration,
-      year: data.year,
-      description: data.description,
+      country: data.country || 'No data',
+      director: data.director || 'No data',
+      duration: data.duration || 'No data',
+      year: data.year || 'No data',
+      description: data.description || 'No data',
       image: data.image,
-      trailer: data.trailerLink,
-      movieId: data.id,
+      trailer: data.trailerLink || 'No data',
+      movieId: data.id || 'No data',
       nameRU: data.nameRU,
-      nameEN: data.nameEN,
-      thumbnail: data.image
+      nameEN: data.nameEN || 'No name',
+      thumbnail: data.image || 'No data'
     })
   })
     .then(getResponseData);
