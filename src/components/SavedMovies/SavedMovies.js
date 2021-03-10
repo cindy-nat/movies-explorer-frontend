@@ -32,12 +32,17 @@ function SavedMovies({ savedMovies, deleteFilm }) {
     setIsFilteredMovies(true);
   }
 
+  const clearSearchHandle = () => {
+    setIsFilteredMovies(false);
+  }
+
   return (
     <>
       <section className='saved-movies'>
         <SearchForm searchHandle={searchHandle}
                     setIsCheckBoxClicked = {setIsCheckBoxClicked}
-                    isCheckBoxClicked = {isCheckBoxClicked}/>
+                    isCheckBoxClicked = {isCheckBoxClicked}
+                    clearSearchHandle = {clearSearchHandle}/>
 
         { savedMovies.length === 0 || filteredSavedMovies.length === 0 &&
         <p className='saved-movies__text'>Фильмы не найдены</p>}
