@@ -11,10 +11,10 @@ function BurgerMenu() {
   const menuOnClose = () => setIsMenuOpen(false);
   return (
     <>
-      <button className='header__menu-button' onClick={menuOnOpen}></button>
-      {isMenuOpen && <div className={`header__overlay`}></div>}
+      <button className='header__menu-button' onClick={menuOnOpen}/>
+      {isMenuOpen && <div className={`header__overlay`}/>}
       <div className={`header__menu-container ${isMenuOpen && 'header__menu-container_opened'}`}>
-        {isMenuOpen &&  <button type="button" className="header__close-button" onClick={menuOnClose}></button>}
+        {isMenuOpen &&  <button type="button" className="header__close-button" onClick={menuOnClose}/>}
 
         <Navigation isMenuOpen ={isMenuOpen}/>
         <Link to='/profile' className='header__link'>Аккаунт

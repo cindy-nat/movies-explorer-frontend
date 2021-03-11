@@ -16,7 +16,7 @@ function MoviesCard({card, createFilm, savedMovies, deleteFilm }) {
 
     }
     else {
-      let movieItem = savedMovies.filter((savedMovie)=> savedMovie.movieId === card.id);
+      const movieItem = savedMovies.filter((savedMovie)=> savedMovie.movieId === card.id);
       deleteFilm(movieItem[0]._id);
       setIsLiked(false);
     }

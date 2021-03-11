@@ -16,7 +16,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 
 function App() {
-  let history = useHistory();
+  const history = useHistory();
   const [isRegisteredError, setIsRegisteredError] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isLoginError, setIsLoginError] = React.useState(false);

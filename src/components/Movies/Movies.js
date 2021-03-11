@@ -89,7 +89,7 @@ function Movies({movies, isLoading, createFilm, savedMovies, deleteFilm}) {
   }, [allFilteredMovies, filteredMovies]);
 
   React.useEffect(()=> {
-    let savedData = localStorage.getItem('filteredMovies');
+    const savedData = localStorage.getItem('filteredMovies');
     if(savedData) {
       setAllFilteredMovies(JSON.parse(savedData));
       setIsFilteredMovies(true);
@@ -108,7 +108,7 @@ function Movies({movies, isLoading, createFilm, savedMovies, deleteFilm}) {
   }
 
   const searchHandle = (searchValue) => {
-    let filteredMovies = moviesSearchHandle(movies, searchValue);
+    const filteredMovies = moviesSearchHandle(movies, searchValue);
     setAllFilteredMovies(filteredMovies);
     setIsFilteredMovies(true);
     if(filteredMovies.length !== 0) {

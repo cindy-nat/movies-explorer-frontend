@@ -26,7 +26,7 @@ function SavedMovies({ savedMovies, deleteFilm }) {
   }, [isCheckBoxClicked, filteredSavedMovies]);
 
   const searchHandle = (searchValue) => {
-    let filteredSavedMovies = moviesSearchHandle(savedMovies, searchValue);
+    const filteredSavedMovies = moviesSearchHandle(savedMovies, searchValue);
     setFilteredSavedMovies(filteredSavedMovies);
     setFilteredSavedAllMovies(filteredSavedMovies);
     setIsFilteredMovies(true);

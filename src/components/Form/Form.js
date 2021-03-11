@@ -8,8 +8,7 @@ function Form({ formName, submitButton, formText, link, linkText, formData, onSu
   const {values, handleChange, errors, isValid, isFocused, onFocus} = formData
 
   return (
-    <>
-      <form className='form' name={`${formName}-form`} noValidate onSubmit={onSubmit}>
+    <form className='form' name={`${formName}-form`} noValidate onSubmit={onSubmit}>
       <div className='form__input-container'>
         <Route path='/signup'>
           <label htmlFor='name' className='form__label'> Имя</label>
@@ -52,9 +51,7 @@ function Form({ formName, submitButton, formText, link, linkText, formData, onSu
         <button disabled={!isValid} type='submit' className='form__button'>{submitButton}</button>
         <p className="form__text">{formText}<Link to={`/${link}`} className="form__link">{linkText}</Link></p>
       </div>
-      </form>
-    </>
-
+    </form>
 );
 }
 
