@@ -12,7 +12,7 @@ function Portfolio() {
              target="_blank">
             Статичный сайт
           </a>
-          <div className='portfolio__list-arrow'></div>
+          <div className='portfolio__list-arrow'/>
         </li>
         <li className='portfolio__list-item'>
           <a className='portfolio__list-link'
@@ -20,7 +20,7 @@ function Portfolio() {
              target="_blank">
             Адаптивный сайт
           </a>
-          <div className='portfolio__list-arrow'></div>
+          <div className='portfolio__list-arrow'/>
         </li>
         <li className='portfolio__list-item'>
           <a className='portfolio__list-link'
@@ -28,7 +28,7 @@ function Portfolio() {
           target="_blank">
             Одностраничное приложение
           </a>
-          <div className='portfolio__list-arrow'></div>
+          <div className='portfolio__list-arrow'/>
         </li>
       </ul>
     </section>

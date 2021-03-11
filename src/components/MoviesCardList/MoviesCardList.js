@@ -1,21 +1,49 @@
 import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
+import {Route} from "react-router-dom";
 
-function MoviesCardList({ movies, generalClass }) {
-
+function MoviesCardList({ savedMovies, generalClass, filteredMovies, moviesIndexShown, createFilm, deleteFilm, isFilteredMovies, filteredSavedMovies }) {
 
   return (
-    <>
     <ul className={`movies-list ${generalClass}__list`}>
-      {
-        movies.map((card)=> (<MoviesCard card = {card}/>
-          )
-        )
+      <Route path='/saved-movies'>
+      {savedMovies.length > 0 && !isFilteredMovies &&
+      savedMovies.map(movie => {
+        return (<MoviesCard key = {movie._id}
+                                            card = {movie}
+                                            savedMovies = {savedMovies}
+                                            deleteFilm = {deleteFilm}
+        />)})
       }
+      {isFilteredMovies &&
+      filteredSavedMovies.map(movie => {
+        return (<MoviesCard key = {movie._id}
+                                            card = {movie}
+                                            savedMovies = {savedMovies}
+                                            deleteFilm = {deleteFilm}
+        />)})
+      }
+      </Route>
+
+      <Route path='/movies'>
+      {filteredMovies &&
+      filteredMovies.reduce((result, card, i) => {
+        if (i < moviesIndexShown) {
+          result.push(<MoviesCard
+            key          = {card.id}
+            card         = {card}
+            createFilm = {createFilm}
+            savedMovies = {savedMovies}
+            deleteFilm = {deleteFilm}
+            />);
+        }
+        return result;
+      }, [])
+      }
+      </Route>
+
     </ul>
-  <button type='button' className={`additional-button ${generalClass}__button`}>Ещё</button>
-    </>
 );
 }
 
