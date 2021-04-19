@@ -16,4 +16,4 @@
 
 
 ## Ссылка на сайт
-cindy-movies.students.nomoredomains.monster
+https://cindy-movies.students.nomoredomains.monster/
