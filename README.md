@@ -16,7 +16,3 @@
 
 ## Запуск проекта
     npm start
-
-
-## Ссылка на сайт
-https://cindy-movies.students.nomoredomains.monster/
